@@ -33,6 +33,10 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      - run:
+        - name: Download Gradle
+        - command: |
+            wget “https://services.gradle.org/distributions/gradle-5.4.1-bin.zip” |unzip gradle-5.4.1-bin.zip
       - run: gradle dependencies
 
       - save_cache:
@@ -41,7 +45,6 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests! and gen code coverage
-      - run: wget “https://services.gradle.org/distributions/gradle-5.4.1-bin.zip 2”; unzip gradle-5.4.1-bin.zip
       - run: ./gradlew clean test jacocoTestReport
 
       - run:
