@@ -8,6 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:11-jdk
+        environment:
+          PATH: "~/$CIRCLE_PROJECT_REPONAME/gradle-5.4.1/bin:$PATH"
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -39,6 +41,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests! and gen code coverage
+      - run: wget “https://services.gradle.org/distributions/gradle-5.4.1-bin.zip 2”; unzip gradle-5.4.1-bin.zip
       - run: ./gradlew clean test jacocoTestReport
 
       - run:
