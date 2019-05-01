@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 /**
  * Created by jt on 6/13/17.
@@ -17,7 +18,7 @@ import java.math.BigDecimal;
 public class Ingredient {
 
     @Id
-    private String id;
+    private String id = UUID.randomUUID().toString();;
     private String description;
     private BigDecimal amount;
 
