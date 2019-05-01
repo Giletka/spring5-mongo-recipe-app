@@ -26,6 +26,11 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: "Download Gradle"
+          command: |
+            wget “https://services.gradle.org/distributions/gradle-5.4.1-bin.zip” | unzip gradle-5.4.1-bin.zip
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -33,10 +38,6 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run:
-        - name: Download Gradle
-        - command: |
-            wget “https://services.gradle.org/distributions/gradle-5.4.1-bin.zip” |unzip gradle-5.4.1-bin.zip
       - run: gradle dependencies
 
       - save_cache:
