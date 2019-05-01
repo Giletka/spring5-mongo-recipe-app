@@ -29,8 +29,8 @@ jobs:
       - run:
           name: "Download Gradle"
           command: |
-            apt-get install wget | apt-get install unzip |
-            wget “https://services.gradle.org/distributions/gradle-5.4.1-bin.zip” | unzip gradle-5.4.1-bin.zip
+            sudo apt-get install wget | sudo apt-get install unzip |
+            sudo wget “https://services.gradle.org/distributions/gradle-5.4.1-bin.zip” | sudo unzip gradle-5.4.1-bin.zip
 
       # Download and cache dependencies
       - restore_cache:
