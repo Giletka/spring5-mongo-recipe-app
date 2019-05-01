@@ -8,6 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:11-jdk
+        environment:
+          PATH: ~/$CIRCLE_PROJECT_REPONAME/gradle-3.3/bin:$PATH
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
